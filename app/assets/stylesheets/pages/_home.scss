@@ -1,1 +1,28 @@
 // Specific CSS for your home-page
+.above {
+  height: 200px;
+  display: flex;
+  // justify-content: space-between;
+}
+
+.project-face {
+  height: 200px;
+  width: 300px;
+  justify-content: left;
+}
+
+.location-face {
+  justify-content: center;
+}
+
+.coolish {
+  display: flex;
+  justify-content: space-between;
+  display: flex;
+  width: fill;
+  margin: 20px;
+}
+
+.main-options {
+  justify-content: right;
+}
