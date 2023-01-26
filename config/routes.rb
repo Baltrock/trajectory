@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+=======
+
+  devise_for :admins
+  devise_for :users
+>>>>>>> e595fa4d3aceece655804303210cd5b717a054e1
   root to: "pages#home"
   devise_for :admins, controllers: {registrations: "admins/registrations"}
   devise_for :users, controllers: {registrations: "users/registrations"}
