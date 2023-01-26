@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :users
   root to: "pages#home"
+  devise_for :admins, controllers: {registrations: "admins/registrations"}
+  devise_for :users, controllers: {registrations: "users/registrations"}
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   delete "/logout", to: "sessions#destroy"
   post "/signup", to: "sessions#create"
