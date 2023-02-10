@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   # GET /information_forms or /information_forms.json
   def primary
     @user = User.all
+     # The `geocoded` scope filters only users with coordinates
+    @markers = @user.geocoded.map do |user|
+      { lat: user.latitude,
+        lng: user.longitude }
+    end
   end
 
   # GET /user/1 or /user/1.json
@@ -81,7 +86,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name)
-      params.permit(:username, :password, :password_confirmation)
+      params.require(:user).permit(:username)
+      params.permit(:username, :password, :password_confirmation, :address, :latitude, :longitude)
     end
 end

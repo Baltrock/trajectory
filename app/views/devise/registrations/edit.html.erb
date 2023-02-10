@@ -10,6 +10,17 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+    <!-- Allows the user to change User.username attribute. Autofills with current username -->
+    <%= f.input :username,
+                required: false,
+                input_html: { value: current_user.username } %>
+    <%= f.input :address,
+                required: false,
+                input_html: { value: current_user.address }%>
+    <%= f.input :longitude,
+                required: false %>
+    <%= f.input :latitude,
+                required: false %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,

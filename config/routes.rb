@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -10,6 +9,7 @@ Rails.application.routes.draw do
   # get 'admin' => 'admin#primary', as: :admin_root
   get 'users' => 'users#primary', as: :user_root
   get 'admins' => 'admin#primary', as: :admin_root
+  resources :searches
   # Defines the root path route ("/")
   # root "articles#index"
 end
