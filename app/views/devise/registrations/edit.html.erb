@@ -10,6 +10,19 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+    <!-- Allows the user to change User.username attribute. Autofills with current username -->
+    <%= f.input :username,
+                required: false,
+                input_html: { value: current_user.username } %>
+    <%= f.input :address,
+                required: false,
+                input_html: { value: current_user.address }%>
+    <%= f.input :latitude,
+                required: false,
+                input_html: { id: 'lat' } %>
+    <%= f.input :longitude,
+                required: false,
+                input_html: { id: 'long' } %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
@@ -36,3 +49,20 @@
 </div>
 
 <%= link_to "Back", :back %>
+
+<script>
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      console.log("Failed to load latitude and longitude. Geolocation is not supported by this browser.");
+    }
+  }
+
+  function showPosition(position) {
+    document.getElementById("lat").value = position.coords.latitude;
+    document.getElementById("long").value = position.coords.longitude;
+  }
+
+  getLocation();
+</script>

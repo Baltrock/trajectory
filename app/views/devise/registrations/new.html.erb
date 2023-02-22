@@ -7,7 +7,7 @@
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "email" } %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -15,6 +15,12 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :latitude,
+                required: false,
+                input_html: { id: 'lat' } %>
+    <%= f.input :longitude,
+                required: false,
+                input_html: { id: 'long' } %>
   </div>
 
   <div class="form-actions">
@@ -23,3 +29,20 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<script>
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      console.log("Failed to load latitude and longitude. Geolocation is not supported by this browser.");
+    }
+  }
+
+  function showPosition(position) {
+    document.getElementById("lat").value = position.coords.latitude;
+    document.getElementById("long").value = position.coords.longitude;
+  }
+
+  getLocation();
+</script>
